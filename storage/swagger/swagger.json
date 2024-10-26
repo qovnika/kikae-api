@@ -1,0 +1,5069 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kikae",
+        "description": "Documentation for the Application API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/tailor-api/public/api",
+            "description": "Kikae Server #1"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/getTokens": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "getTokens"
+                ]
+            }
+        },
+        "/getUser": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getUser"
+                ]
+            }
+        },
+        "/currentUser": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "currentUser"
+                ]
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "currentUser"
+                ]
+            }
+        },
+        "/getUsers": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "getUsers"
+                ]
+            }
+        },
+        "/getUser/{id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "getUser"
+                ]
+            }
+        },
+        "/adminUpdateUser": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "adminUpdateUser"
+                ]
+            }
+        },
+        "/getStores": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStores"
+                ]
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStores"
+                ]
+            }
+        },
+        "/getStores/{user_id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "getStores"
+                ]
+            }
+        },
+        "/getProducts": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getProducts"
+                ]
+            },
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getProducts"
+                ]
+            }
+        },
+        "/getProduct/{id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getProduct"
+                ]
+            }
+        },
+        "/getStoreProducts/{store_id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "store_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getStoreProducts"
+                ]
+            }
+        },
+        "/getStoreProducts": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreProducts"
+                ]
+            }
+        },
+        "/getStoreLikes": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreLikes"
+                ]
+            }
+        },
+        "/getProductLikes": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getProductLikes"
+                ]
+            }
+        },
+        "/likeStore": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "likeStore"
+                ]
+            }
+        },
+        "/likeProduct": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "likeProduct"
+                ]
+            }
+        },
+        "/getStoreRating": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreRating"
+                ]
+            }
+        },
+        "/rateStore": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "rateStore"
+                ]
+            }
+        },
+        "/getProductRating": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getProductRating"
+                ]
+            }
+        },
+        "/rateProduct": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "rateProduct"
+                ]
+            }
+        },
+        "/adminUpdateProduct": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "adminUpdateProduct"
+                ]
+            }
+        },
+        "/addProduct": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addProduct"
+                ]
+            }
+        },
+        "/deleteProduct": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteProduct"
+                ]
+            }
+        },
+        "/addProductMedia": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addProductMedia"
+                ]
+            }
+        },
+        "/createBoomerang": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "createBoomerang"
+                ]
+            }
+        },
+        "/getBoomerangs": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getBoomerangs"
+                ]
+            }
+        },
+        "/getStoreBoomerangs/{store_id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "store_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getStoreBoomerangs"
+                ]
+            }
+        },
+        "/uploadFile": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "uploadFile"
+                ]
+            }
+        },
+        "/uploadMessageFile": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "uploadMessageFile"
+                ]
+            }
+        },
+        "/getCategories": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getCategories"
+                ]
+            }
+        },
+        "/getProductCategories": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getProductCategories"
+                ]
+            }
+        },
+        "/createStore": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "createStore"
+                ]
+            }
+        },
+        "/editStore": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "editStore"
+                ]
+            }
+        },
+        "/getStores/{category_id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getStores"
+                ]
+            }
+        },
+        "/getStore/{id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getStore"
+                ]
+            }
+        },
+        "/getStoreWithFollowers/{id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getStoreWithFollowers"
+                ]
+            }
+        },
+        "/getUserStore/{user_id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getUserStore"
+                ]
+            }
+        },
+        "/getUserOrders": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getUserOrders"
+                ]
+            }
+        },
+        "/getStoreOrders": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreOrders"
+                ]
+            }
+        },
+        "/updateOrder": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "updateOrder"
+                ]
+            }
+        },
+        "/getOrders": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getOrders"
+                ]
+            }
+        },
+        "/storeSubscription": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "storeSubscription"
+                ]
+            }
+        },
+        "/storeTransaction": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "storeTransaction"
+                ]
+            }
+        },
+        "/getTransactions/{id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getTransactions"
+                ]
+            }
+        },
+        "/getMyTransactions": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getMyTransactions"
+                ]
+            }
+        },
+        "/updateTransaction": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "updateTransaction"
+                ]
+            }
+        },
+        "/getMessages": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getMessages"
+                ]
+            }
+        },
+        "/getUserMessages": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getUserMessages"
+                ]
+            }
+        },
+        "/createMessage": {
+            "post": {
+                "summary": "Create a new resource, i.e the message.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "createMessage"
+                ]
+            }
+        },
+        "/updateMessage": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "updateMessage"
+                ]
+            }
+        },
+        "/getPlans": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getPlans"
+                ]
+            }
+        },
+        "/getPlan": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getPlan"
+                ]
+            }
+        },
+        "/getStoreVideos": {
+            "get": {
+                "summary": "Get all stores that have videos.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreVideos"
+                ]
+            }
+        },
+        "/getStoreStories": {
+            "get": {
+                "summary": "Get all stores that have stories.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreStories"
+                ]
+            }
+        },
+        "/deleteBoomerang": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteBoomerang"
+                ]
+            }
+        },
+        "/getUserEvents": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getUserEvents"
+                ]
+            }
+        },
+        "/getEvents": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getEvents"
+                ]
+            }
+        },
+        "/getStoreEvents": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreEvents"
+                ]
+            }
+        },
+        "/getMyEvents": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getMyEvents"
+                ]
+            }
+        },
+        "/createEvent": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "createEvent"
+                ]
+            }
+        },
+        "/updateEvent": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "updateEvent"
+                ]
+            }
+        },
+        "/deleteEvent": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteEvent"
+                ]
+            }
+        },
+        "/addEventMedia": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addEventMedia"
+                ]
+            }
+        },
+        "/getEventMedia": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getEventMedia"
+                ]
+            }
+        },
+        "/deleteEventMedia": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteEventMedia"
+                ]
+            }
+        },
+        "/registerEvent": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "registerEvent"
+                ]
+            }
+        },
+        "/incrementStoreVisits": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "incrementStoreVisits"
+                ]
+            }
+        },
+        "/getProductComments": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getProductComments"
+                ]
+            }
+        },
+        "/saveProductComment": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "saveProductComment"
+                ]
+            }
+        },
+        "/getStoreComments": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStoreComments"
+                ]
+            }
+        },
+        "/saveStoreComment": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "saveStoreComment"
+                ]
+            }
+        },
+        "/storeFollower": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "storeFollower"
+                ]
+            }
+        },
+        "/getFollowers": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getFollowers"
+                ]
+            }
+        },
+        "/getFollowing": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getFollowing"
+                ]
+            }
+        },
+        "/deleteFollower": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteFollower"
+                ]
+            }
+        },
+        "/deleteFollowing": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteFollowing"
+                ]
+            }
+        },
+        "/addStory": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addStory"
+                ]
+            }
+        },
+        "/getStories": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStories"
+                ]
+            }
+        },
+        "/getStories/{store_id}": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "store_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "getStories"
+                ]
+            }
+        },
+        "/getMyBanks": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getMyBanks"
+                ]
+            }
+        },
+        "/getMyTransfers": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getMyTransfers"
+                ]
+            }
+        },
+        "/getFlutterwaveLink": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getFlutterwaveLink"
+                ]
+            }
+        },
+        "/verifyPaystackPayment": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "verifyPaystackPayment"
+                ]
+            }
+        },
+        "/getPaystackBanks": {
+            "get": {
+                "summary": "Get Nigerian (NGN) banks from paystack",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getPaystackBanks"
+                ]
+            }
+        },
+        "/resolveAccountDetails": {
+            "post": {
+                "summary": "Resolve Nigerian (NGN) bank account from paystack",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "resolveAccountDetails"
+                ]
+            }
+        },
+        "/createRecepient": {
+            "post": {
+                "summary": "Create paystack transfer recepient",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "createRecepient"
+                ]
+            }
+        },
+        "/initiatePaystackTransfer": {
+            "post": {
+                "summary": "Initiate paystack transfer",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "initiatePaystackTransfer"
+                ]
+            }
+        },
+        "/finalizePaystackTransfer": {
+            "post": {
+                "summary": "Finalize paystack transfer",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "finalizePaystackTransfer"
+                ]
+            }
+        },
+        "/verifyPaystackTransfer": {
+            "post": {
+                "summary": "Verify paystack payment",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "verifyPaystackTransfer"
+                ]
+            }
+        },
+        "/listPaystackTransfer": {
+            "post": {
+                "summary": "List paystack payment",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "listPaystackTransfer"
+                ]
+            }
+        },
+        "/fetchPaystackTransfer": {
+            "post": {
+                "summary": "Fetch paystack transfer",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "fetchPaystackTransfer"
+                ]
+            }
+        },
+        "/addBank": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addBank"
+                ]
+            }
+        },
+        "/deleteBank": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteBank"
+                ]
+            }
+        },
+        "/getStates": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getStates"
+                ]
+            }
+        },
+        "/getLogistics": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getLogistics"
+                ]
+            }
+        },
+        "/getLogistic": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getLogistic"
+                ]
+            }
+        },
+        "/addLogistic": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addLogistic"
+                ]
+            }
+        },
+        "/updateLogistic": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "updateLogistic"
+                ]
+            }
+        },
+        "/deleteLogistic": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteLogistic"
+                ]
+            }
+        },
+        "/getLogisticDestinations": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getLogisticDestinations"
+                ]
+            }
+        },
+        "/getLogisticDestination": {
+            "post": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getLogisticDestination"
+                ]
+            }
+        },
+        "/addLogisticDestination": {
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "addLogisticDestination"
+                ]
+            }
+        },
+        "/updateLogisticDestination": {
+            "post": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "updateLogisticDestination"
+                ]
+            }
+        },
+        "/deleteLogisticDestination": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "deleteLogisticDestination"
+                ]
+            }
+        },
+        "/googleCallback": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "googleCallback"
+                ]
+            }
+        },
+        "/twitterCallback": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "twitterCallback"
+                ]
+            }
+        },
+        "/facebookCallback": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "facebookCallback"
+                ]
+            }
+        },
+        "/linkedinCallback": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "linkedinCallback"
+                ]
+            }
+        },
+        "/getTwitterToken": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "getTwitterToken"
+                ]
+            }
+        },
+        "/twitterRedirect": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "(Unauthorized) Invalid or missing Access Token"
+                    }
+                },
+                "tags": [
+                    "twitterRedirect"
+                ]
+            }
+        }
+    },
+    "tags": [],
+    "components": {
+        "schemas": {
+            "Attachment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1524418835
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "message_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1567815563
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "url",
+                    "message_id"
+                ]
+            },
+            "Bank": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1384530578
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "number": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "account_name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "recepient": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "bank_code": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "number",
+                    "account_name",
+                    "bank_code",
+                    "store_id"
+                ]
+            },
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1912692875
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "Event": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1489337992
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "event_type": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1281245922
+                    },
+                    "dated": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "date",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "timed": {
+                        "type": "string",
+                        "description": "time",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "venue": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "store_id",
+                    "event_type",
+                    "dated",
+                    "timed"
+                ]
+            },
+            "EventLike": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1702204063
+                    },
+                    "event_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1959323064
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1753402018
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "event_id",
+                    "user_id"
+                ]
+            },
+            "EventMedia": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1117800458
+                    },
+                    "event_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1926391574
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "event_id",
+                    "url"
+                ]
+            },
+            "EventRegister": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1318091551
+                    },
+                    "event_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1746774454
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1319734615
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "event_id",
+                    "user_id"
+                ]
+            },
+            "EventType": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1997105995
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "title",
+                    "description"
+                ]
+            },
+            "Follow": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1484312460
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1495715594
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "store_id",
+                    "user_id"
+                ]
+            },
+            "Gallerycomments": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1565528099
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1685360135
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1394920502
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "store_id",
+                    "parent_id"
+                ]
+            },
+            "Gallerylikes": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1798017965
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1167051008
+                    },
+                    "like": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "like",
+                    "store_id"
+                ]
+            },
+            "Galleryratings": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1018217561
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1766144361
+                    },
+                    "rating": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "store_id"
+                ]
+            },
+            "Logistic": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1723522272
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "phone"
+                ]
+            },
+            "LogisticDestination": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1784289850
+                    },
+                    "logistic_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1180647625
+                    },
+                    "state_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1588434893
+                    },
+                    "area": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "cost": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "logistic_id",
+                    "state_id"
+                ]
+            },
+            "Media": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1918165930
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1026871184
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "url",
+                    "product_id"
+                ]
+            },
+            "Message": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1213864457
+                    },
+                    "sender_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1157401337
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "recepient_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1901749661
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "read": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "starred": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "muted": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "archived": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "sender_id",
+                    "recepient_id",
+                    "read",
+                    "starred",
+                    "muted",
+                    "archived"
+                ]
+            },
+            "Order": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1761274659
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1439729967
+                    },
+                    "units": {
+                        "type": "integer",
+                        "description": "integer",
+                        "nullable": false,
+                        "example": 1623032336
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "note": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "size": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "colour": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": true,
+                        "example": 1079558650
+                    },
+                    "drawing": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": true,
+                        "example": 1419658329
+                    },
+                    "fabric": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": true,
+                        "example": 1782270815
+                    },
+                    "location": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": true,
+                        "example": 1170660719
+                    },
+                    "logistic_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": true,
+                        "example": 1030190724
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "default": "Order placed",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "settled": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "transaction_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1505712481
+                    },
+                    "delivery_address": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "area_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1776952041
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "product_id",
+                    "units",
+                    "status",
+                    "settled",
+                    "transaction_id",
+                    "area_id"
+                ]
+            },
+            "Plans": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1793778055
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "default": "0.00",
+                        "nullable": false
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "price"
+                ]
+            },
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1852514630
+                    },
+                    "old_price": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": false
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "units": {
+                        "type": "integer",
+                        "description": "integer",
+                        "nullable": false,
+                        "example": 1819756780
+                    },
+                    "category_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1565067216
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "product_category_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1814711083
+                    },
+                    "bespoke": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "note": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "top_height": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "shoulder_length": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "neck_length": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "arm_width": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "belly_length": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "waist_length": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "bottom_length": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "thigh": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "ankle_width": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "size": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "fabric": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "rating": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "made_in_nigeria": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "price",
+                    "name",
+                    "units",
+                    "category_id",
+                    "store_id",
+                    "product_category_id",
+                    "bespoke",
+                    "note",
+                    "top_height",
+                    "shoulder_length",
+                    "neck_length",
+                    "arm_width",
+                    "belly_length",
+                    "waist_length",
+                    "bottom_length",
+                    "thigh",
+                    "ankle_width",
+                    "size",
+                    "fabric",
+                    "made_in_nigeria"
+                ]
+            },
+            "ProductCategory": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1570842307
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "ProductColor": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1688800401
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1497079033
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "default": "#000000",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "product_id",
+                    "value"
+                ]
+            },
+            "ProductDrawing": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1486361189
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1569251752
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "product_id"
+                ]
+            },
+            "ProductFabric": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1855362234
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1318892075
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "product_id"
+                ]
+            },
+            "ProductLocation": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1443678216
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1817985514
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "product_id",
+                    "address"
+                ]
+            },
+            "ProductSize": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1284414862
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1852498197
+                    },
+                    "size": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "product_id",
+                    "size"
+                ]
+            },
+            "ProductTag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1959576574
+                    },
+                    "tag_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1978210958
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1623828851
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "tag_id",
+                    "product_id"
+                ]
+            },
+            "Productcomments": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1025532261
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1806440647
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1196536356
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "description": "integer",
+                        "nullable": true,
+                        "example": 1021353596
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "product_id"
+                ]
+            },
+            "Productlikes": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1874164607
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1016904187
+                    },
+                    "like": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1276159295
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "like",
+                    "product_id"
+                ]
+            },
+            "Productratings": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1486992650
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1310684167
+                    },
+                    "rating": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1155549087
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "product_id"
+                ]
+            },
+            "ReportProduct": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1683040340
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "ReportStore": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1430576560
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "ReportVideo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1906978577
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            },
+            "State": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1936939972
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "Store": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "hash": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1061624841
+                    },
+                    "logo": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "primary_media": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "position": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "category_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1839291099
+                    },
+                    "product_category_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1059253058
+                    },
+                    "rating": {
+                        "type": "integer",
+                        "description": "integer",
+                        "nullable": true,
+                        "example": 1943311260
+                    },
+                    "background_image": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "sound": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "link": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "volume": {
+                        "type": "integer",
+                        "description": "integer",
+                        "default": "100",
+                        "nullable": false,
+                        "example": 1121917431
+                    },
+                    "views": {
+                        "type": "integer",
+                        "description": "integer",
+                        "default": "0",
+                        "nullable": false,
+                        "example": 1824680263
+                    },
+                    "animation": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "balance": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "default": "0.00",
+                        "nullable": false
+                    },
+                    "state_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1345774193
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "user_id",
+                    "category_id",
+                    "product_category_id",
+                    "volume",
+                    "views",
+                    "balance",
+                    "state_id"
+                ]
+            },
+            "Storecomments": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1979547793
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1854224734
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1700924726
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "store_id",
+                    "parent_id"
+                ]
+            },
+            "Storelikes": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1975155195
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1910120777
+                    },
+                    "like": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "like",
+                    "store_id"
+                ]
+            },
+            "Storeratings": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1920429934
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1393352207
+                    },
+                    "rating": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": true
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "store_id"
+                ]
+            },
+            "Story": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1294565699
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "store_id",
+                    "url"
+                ]
+            },
+            "Subscription": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1603915377
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "tx_ref": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "transaction_id": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": false
+                    },
+                    "plan_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1835952085
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "store_id",
+                    "tx_ref",
+                    "transaction_id",
+                    "status",
+                    "price",
+                    "plan_id"
+                ]
+            },
+            "Tag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1755699886
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name"
+                ]
+            },
+            "Transaction": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1927937887
+                    },
+                    "tx_ref": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "transaction_id": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "default": "Order placed",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "default": "0.00",
+                        "nullable": false
+                    },
+                    "settled": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": false
+                    },
+                    "delivery_address": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "pickup_address": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1945554453
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "tx_ref",
+                    "transaction_id",
+                    "status",
+                    "amount",
+                    "settled",
+                    "user_id"
+                ]
+            },
+            "Transfer": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1841672412
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "default": "nuban",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "reference": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "float",
+                        "nullable": false
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "type",
+                    "reference",
+                    "amount",
+                    "store_id"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1427574001
+                    },
+                    "fname": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "onames": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "lname": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "dob": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "date",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "usertype_id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1105986979
+                    },
+                    "profilePic": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "isVendor": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "nullable": true,
+                        "example": false
+                    },
+                    "isAdmin": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "nullable": true,
+                        "example": false
+                    },
+                    "email_verified_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "isLogged": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "0",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "description": "boolean",
+                        "default": "1",
+                        "nullable": false,
+                        "example": true
+                    },
+                    "provider": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "provider_id": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "remember_token": {
+                        "type": "string",
+                        "description": "string(100)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "fname",
+                    "lname",
+                    "email",
+                    "usertype_id",
+                    "isLogged",
+                    "status"
+                ]
+            },
+            "Usertype": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1363884448
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description"
+                ]
+            },
+            "storevideos": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "bigint",
+                        "nullable": false,
+                        "example": 1518097382
+                    },
+                    "store_id": {
+                        "type": "string",
+                        "description": "string(36)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": false,
+                        "example": "string"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "string(255)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "text(65535)",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime",
+                        "nullable": true,
+                        "example": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "store_id",
+                    "url"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

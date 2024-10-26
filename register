@@ -1,0 +1,12 @@
+{
+    "fname" : "Michael",
+    "onames" : "N",
+    "lname" : "Azu",
+    "email" : "invoq@yahoo.co.uk",
+    "phone" : "09168699422",
+    "address" : "3 Kanta Road",
+    "dob" : "1986-02-23",
+    "usertype_id" : 1,
+    "password" : "P@$$word",
+    "password_confirmation": "P@$$word"
+}
