@@ -10,6 +10,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserRegistered;
 
 class RegisteredUserController extends Controller
 {
@@ -41,8 +43,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
-//        Auth::login($user);
+//        Mail::to($user->email)->send(new UserRegistered($user));
 
         return response([
             "message" => "Your account has been created successfully.",

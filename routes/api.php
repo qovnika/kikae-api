@@ -44,6 +44,15 @@ Route::middleware('auth:sanctum')->post('/currentUser', function (Request $reque
     return ["status" => true, "message" => "Successfully retrieved user details.", "data" => $request->user()];
 });
 
+//Generate passcode for user to reset their password
+Route::post("/sendCode", [UserController::class, "sendCode"]);
+
+//Verify the code entered by the user for updating their password
+Route::post("/verifyCode", [UserController::class, "verifyCode"]);
+
+//Update the user's password
+Route::post("/updatePassword", [UserController::class, "updatePassword"]);
+
 // Get all users in the system
 Route::middleware('auth:sanctum')->get('/getUsers/{id}', [UserController::class, "index"]);
 

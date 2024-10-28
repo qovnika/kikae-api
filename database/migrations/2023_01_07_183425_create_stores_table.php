@@ -25,8 +25,8 @@ return new class extends Migration
             $table->text("logo")->nullable();
             $table->text("primary_media")->nullable();
             $table->string("position")->nullable();
-            $table->foreignId("category_id")->constrained("categories")->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('product_category_id')->constrained("product_categories")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("category_id")->nullable()->constrained("categories")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('product_category_id')->nullable()->constrained("product_categories")->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer("rating")->nullable();
             $table->text("background_image")->nullable();
             $table->text("sound")->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->integer("views")->default(0);
             $table->string("animation")->nullable();
             $table->float("balance")->default(0.00);
-            $table->foreignId("state_id")->constrained("states")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId("state_id")->nullable()->constrained("states")->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->primary("id");
         });

@@ -32,7 +32,7 @@ class StoreController extends Controller
         if ($request->user_id) {
             return Store::where("user_id", $request->user_id)->get()->unique();
         } elseif ($request->category_id) {
-            return Store::orderBy("id", "DESC")->where("category_id", $request->category_id)->paginate(8);
+            return Store::orderBy("id", "DESC")->where("category_id", $request->category_id);
         } elseif($request->id) {
             return Store::find($request->id);
         } elseif ($request->all) {
@@ -40,7 +40,7 @@ class StoreController extends Controller
 
             return Controller::responder(true, "Successfully retrieved all stores.", $stores);
         } else {
-            $stores = Store::with(["ratings", "transactions"])->paginate(12);
+            $stores = Store::with(["ratings", "transactions"]);
             
             $houses = json_encode($stores);
             $houses = json_decode($houses);
@@ -157,6 +157,10 @@ class StoreController extends Controller
      */
     public function store(StoreStoreRequest $request)
     {
+        $store = Store::where("user_id", $request->user_id)->get()->unique();
+        if (count($store) > 1) {
+            return Controller::responder(false, "User already has a store.", $store);
+        }
         $request->validate([
             "name" => ["required", "string", "unique:stores,name"],
             "address" => ["required", "string"],
