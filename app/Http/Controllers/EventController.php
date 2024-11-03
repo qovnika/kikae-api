@@ -12,6 +12,17 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get event endpoint - POST request query parameters:,
+     *     description: Get event endpoint - Parameters for POST request must have store id or event id {store_id || id},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Event
+     * )
+     * Remove the specified resource from storage.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -38,6 +49,17 @@ class EventController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create event endpoint - POST request query parameters:,
+     *     description: Create event endpoint - Parameters for POST request must have {name, description, store_id, dated, timed, venue},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Event
+     * )
+     * Remove the specified resource from storage.
      *
      * @param  \App\Http\Requests\StoreEventRequest  $request
      * @return \Illuminate\Http\Response
@@ -89,6 +111,17 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @Request({
+     *     summary: Update event endpoint - POST request query parameters:,
+     *     description: Update event endpoint - Parameters for POST request must have {name, description, store_id, dated, timed, venue},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Event
+     * )
+     * Remove the specified resource from storage.
+     *
      * @param  \App\Http\Requests\UpdateEventRequest  $request
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
@@ -114,6 +147,17 @@ class EventController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @Request({
+     *     summary: Delete event endpoint - POST request query parameters:,
+     *     description: Delete event endpoint - Parameters for POST request must have the event id {id},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Event
+     * )
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Event  $event

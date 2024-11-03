@@ -35,8 +35,8 @@ class ComposerStaticInita5b35e80d50d8c2ac355d38ce79d04ac
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
         '60c565f78852197e0015c54efbb0daf6' => __DIR__ . '/..' . '/mezatsong/laravel-swagger-docs/src/helpers.php',
+        '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -208,8 +208,8 @@ class ComposerStaticInita5b35e80d50d8c2ac355d38ce79d04ac
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Whoops\\' => 
         array (
@@ -766,8 +766,11 @@ class ComposerStaticInita5b35e80d50d8c2ac355d38ce79d04ac
         'App\\Http\\Requests\\UpdatestorevideosRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatestorevideosRequest.php',
         'App\\Mail\\OrderDispatched' => __DIR__ . '/../..' . '/app/Mail/OrderDispatched.php',
         'App\\Mail\\OrderPlaced' => __DIR__ . '/../..' . '/app/Mail/OrderPlaced.php',
+        'App\\Mail\\PasswordForgotten' => __DIR__ . '/../..' . '/app/Mail/PasswordForgotten.php',
+        'App\\Mail\\UserRegistered' => __DIR__ . '/../..' . '/app/Mail/UserRegistered.php',
         'App\\Models\\Attachment' => __DIR__ . '/../..' . '/app/Models/Attachment.php',
         'App\\Models\\Bank' => __DIR__ . '/../..' . '/app/Models/Bank.php',
+        'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
         'App\\Models\\EventLike' => __DIR__ . '/../..' . '/app/Models/EventLike.php',
@@ -976,6 +979,7 @@ class ComposerStaticInita5b35e80d50d8c2ac355d38ce79d04ac
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\AttachmentFactory' => __DIR__ . '/../..' . '/database/factories/AttachmentFactory.php',
         'Database\\Factories\\BankFactory' => __DIR__ . '/../..' . '/database/factories/BankFactory.php',
+        'Database\\Factories\\CartFactory' => __DIR__ . '/../..' . '/database/factories/CartFactory.php',
         'Database\\Factories\\CategoryFactory' => __DIR__ . '/../..' . '/database/factories/CategoryFactory.php',
         'Database\\Factories\\EventFactory' => __DIR__ . '/../..' . '/database/factories/EventFactory.php',
         'Database\\Factories\\EventLikeFactory' => __DIR__ . '/../..' . '/database/factories/EventLikeFactory.php',

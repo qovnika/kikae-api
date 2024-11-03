@@ -11,6 +11,17 @@ class ProductColorController extends Controller
     /**
      * Display a listing of the resource.
      *
+     *
+     * @Request({
+     *     summary: Get colors endpoint - POST request query parameters:,
+     *     description: Get colors endpoint - Parameters for POST request must have the store id or user id {store_id || user_id},
+     *     tags: ProductColor
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductColor
+     * )
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()

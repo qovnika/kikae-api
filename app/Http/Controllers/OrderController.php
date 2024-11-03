@@ -17,6 +17,16 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get orders endpoint - POST request query parameters:,
+     *     description: Get orders endpoint - Parameters for POST request must have the store id or user id {store_id || user_id},
+     *     tags: Order
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Order
+     * )
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -49,6 +59,16 @@ class OrderController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create orders endpoint - POST request query parameters:,
+     *     description: Create orders endpoint - Parameters for POST request must have the price, units, product id and user id {price, units, product_id, user_id},
+     *     tags: Order
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Order
+     * )
      *
      * @param  \App\Http\Requests\StoreOrderRequest  $request
      * @return \Illuminate\Http\Response
@@ -96,6 +116,17 @@ class OrderController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @Request({
+     *     summary: Update orders endpoint - POST request query parameters:,
+     *     description: Update orders endpoint - Parameters for POST request must have the order id and status {id, status},
+     *     tags: Order
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Order
+     * )
+     *
      *
      * @param  \App\Http\Requests\UpdateOrderRequest  $request
      * @param  \App\Models\Order  $order

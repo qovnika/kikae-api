@@ -404,3 +404,21 @@ Route::get("/getTwitterToken", [AuthenticatedSessionController::class, "getTwitt
 
 //Redirect to Home page after getting token
 Route::post("/twitterRedirect", [AuthenticatedSessionController::class, "twitterRedirect"]);
+
+//Add to cart
+Route::post("/addToCart", [CartController::class, "store"]);
+
+//Remove Item from cart
+Route::post("/removeFromCart", [CartController::class, "removeFromCart"]);
+
+//Update cart
+Route::post("/updateCart", [CartController::class, "update"]);
+
+//Delete cart
+Route::post("/deleteCart", [CartController::class, "deleteCart"]);
+
+//Get cart
+Route::post("/getCart", [CartController::class, "index"]);
+
+//Get cart item
+Route::post("/getCartItem", [CartController::class, "getCartItem"]);

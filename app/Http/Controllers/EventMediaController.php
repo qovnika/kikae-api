@@ -11,7 +11,18 @@ use Illuminate\Support\Facades\Storage;
 class EventMediaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get event media
+     *
+     * @Request({
+     *     summary: Get event media endpoint - POST request query parameters:,
+     *     description: Get event media endpoint - Parameters for POST request must have event id {event_id},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: EventMedia
+     * )
+     * Remove the specified resource from storage.
      *
      * @return \Illuminate\Http\Response
      */
@@ -34,6 +45,17 @@ class EventMediaController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create event media endpoint - POST request query parameters:,
+     *     description: Create event media endpoint - Parameters for POST request must have the event id and url {event_id, url},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Event
+     * )
+     * Remove the specified resource from storage.
      *
      * @param  \App\Http\Requests\StoreEventMediaRequest  $request
      * @return \Illuminate\Http\Response
@@ -90,6 +112,17 @@ class EventMediaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @Request({
+     *     summary: Delete event medium endpoint - POST request query parameters:,
+     *     description: Delete event medium endpoint - Parameters for POST request must have the event medium id {id},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Event
+     * )
+     * Remove the specified resource from storage.
+     *
      * @param  \App\Models\EventMedia  $eventMedia
      * @return \Illuminate\Http\Response
      */
@@ -97,9 +130,9 @@ class EventMediaController extends Controller
     {
         $medium = EventMedia::find($request->id);
         $media = $medium;
- 	Storage::delete($medium->url);
- 	$medium->delete();
+     	Storage::delete($medium->url);
+ 	    $medium->delete();
  	
- 	return Controller::responder(true, "The medium has been deleted successfully.", $media);       
+     	return Controller::responder(true, "The medium has been deleted successfully.", $media);       
     }
 }

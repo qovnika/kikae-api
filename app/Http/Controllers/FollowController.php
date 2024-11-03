@@ -12,6 +12,16 @@ class FollowController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get store followings endpoint - POST request query parameters:,
+     *     description: Get store followings endpoint - Parameters for POST request must have the store id or user id {store_id || user_id},
+     *     tags: Follow
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Follow
+     * )
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -19,7 +29,7 @@ class FollowController extends Controller
         if ($request->store_id) {
             $follows = Follow::orderBy("id", "DESC")->where("store_id", $request->store_id)->get()->unique();
         } else if ($request->user_id) {
-            $follows = Follow::with("store")->where("user_id", $request->user_id)->paginate(20);
+            $follows = Follow::with("store")->where("user_id", $request->user_id);
         } else {
             $follows = Follow::all()->sortByDesc("id");
         }
@@ -39,6 +49,16 @@ class FollowController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create store following endpoint - POST request query parameters:,
+     *     description: Create store following endpoint - Parameters for POST request must have the store id and user id {store_id && user_id},
+     *     tags: Follow
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Follow
+     * )
      *
      * @param  \App\Http\Requests\StoreFollowRequest  $request
      * @return \Illuminate\Http\Response
@@ -101,6 +121,16 @@ class FollowController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @Request({
+     *     summary: Delete store followings endpoint - POST request query parameters:,
+     *     description: Delete store followings endpoint - Parameters for POST request must have the store id and user id {store_id && user_id},
+     *     tags: Follow
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Follow
+     * )
      *
      * @param  \App\Models\Follow  $follow
      * @return \Illuminate\Http\Response

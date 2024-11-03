@@ -93,5 +93,14 @@ class VerifyCsrfToken extends Middleware
         "/twitterRedirect",
         "/facebookCallback",
         "/linkedinCallback",
+        "/addToCart",
+        "/updateCart",
+        "/removeFromCart",
+        "/deleteCart",
+        "/getCart",
+        "/getCartItem",
+        "/sendCode",
+        "/verifyCode",
+        "/updatePassword"
     ];
 }

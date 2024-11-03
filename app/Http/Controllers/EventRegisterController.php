@@ -12,6 +12,17 @@ class EventRegisterController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get event register endpoint - POST request query parameters:,
+     *     description: Get event register endpoint - Parameters for POST request must have the user id {user_id},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: EventRegister
+     * )
+     * Remove the specified resource from storage.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -32,6 +43,17 @@ class EventRegisterController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create event register endpoint - POST request query parameters:,
+     *     description: Create event register endpoint - Parameters for POST request must have the user id {user_id},
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: EventRegister
+     * )
+     * Remove the specified resource from storage.
      *
      * @param  \App\Http\Requests\StoreEventRegisterRequest  $request
      * @return \Illuminate\Http\Response
