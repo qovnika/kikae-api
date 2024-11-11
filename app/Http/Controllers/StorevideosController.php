@@ -43,6 +43,16 @@ class StorevideosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Store store runway videos endpoint - GET request query parameters,
+     *     description: Store store runway videos endpoint - Parameters for POST request requires store_id, title, description and url: {store_id, title, description, url},
+     *     tags: Store
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: storevideos
+     * )
+     *
      * @param  \App\Http\Requests\StorestorevideosRequest  $request
      * @return \Illuminate\Http\Response
      */

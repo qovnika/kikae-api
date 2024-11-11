@@ -30,69 +30,76 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         if ($request->user_id) {
-            return Store::where("user_id", $request->user_id)->get()->unique();
+            $stores = Store::where("user_id", $request->user_id)->get()->unique();
+            return Controller::responder(true, "Successfully retrieved all stores.", $stores);
         } elseif ($request->category_id) {
-            return Store::orderBy("id", "DESC")->where("category_id", $request->category_id);
+            $stores = Store::orderBy("id", "DESC")->where("category_id", $request->category_id);
+            return Controller::responder(true, "Successfully retrieved all stores.", $stores);
         } elseif($request->id) {
-            return Store::find($request->id);
+            $stores = Store::find($request->id);
+            return Controller::responder(true, "Successfully retrieved all stores.", $stores);
         } elseif ($request->all) {
             $stores = Store::with("ratings")->get()->unique();
 
             return Controller::responder(true, "Successfully retrieved all stores.", $stores);
         } else {
-            $stores = Store::with(["ratings", "transactions"]);
+            $stores = Store::with(["ratings", "transactions"])->get();
             
-            $houses = json_encode($stores);
-            $houses = json_decode($houses);
-            $houses = $houses->data;
-            //Sort stores by subscription plan
-            for ($i = 0; $i < count($houses); $i++) {
-            	$highest = $i;
-            	$store_subs = count($houses[$i]->subscriptions);
-            	for ($j = $i + 1; $j < count($houses); $j++) {
-            		$subs = count($houses[$j]->subscriptions);
-            		if ($subs > 0 && $store_subs > 0 && $houses[$j]->subscriptions[$subs - 1]->plan_id > $houses[$i]->subscriptions[$store_subs - 1]->plan_id) {
-            			$highest = $j;
-            		}
-            	}
-            	$subs = count($houses[$highest]->subscriptions);
-            	if ($subs > 0 && $store_subs > 0 && $houses[$i]->subscriptions[$store_subs - 1]->plan_id < $houses[$highest]->subscriptions[$store_subs - 1]->plan_id) {
-            		$hold = $houses[$i];
-            		$houses[$i] = $houses[$highest];
-            		$houses[$highest] = $hold;
-            	}
+            if (count($stores) > 0) {
+                $houses = json_encode($stores);
+                $houses = json_decode($houses);
+
+                //Sort stores by subscription plan
+                for ($i = 0; $i < count($houses); $i++) {
+                    $highest = $i;
+                    $store_subs = count($houses[$i]->subscriptions);
+                    for ($j = $i + 1; $j < count($houses); $j++) {
+                        $subs = count($houses[$j]->subscriptions);
+                        if ($subs > 0 && $store_subs > 0 && $houses[$j]->subscriptions[$subs - 1]->plan_id > $houses[$i]->subscriptions[$store_subs - 1]->plan_id) {
+                            $highest = $j;
+                        }
+                    }
+                    $subs = count($houses[$highest]->subscriptions);
+                    if ($subs > 0 && $store_subs > 0 && $houses[$i]->subscriptions[$store_subs - 1]->plan_id < $houses[$highest]->subscriptions[$store_subs - 1]->plan_id) {
+                        $hold = $houses[$i];
+                        $houses[$i] = $houses[$highest];
+                        $houses[$highest] = $hold;
+                    }
+                }
+                foreach ($houses as $ind => $shop) {
+                    if ($shop && count($shop->ratings) > 0) {
+                        $avg = 0;
+                        foreach ($shop->ratings as $rating) {
+                            $avg += $rating->rating;
+                        }
+                        $avg = $avg / count($shop->ratings);
+                            $houses[$ind]->rated = $avg;
+                    } else {
+                        $houses[$ind]->rated = 0;
+                    }
+                }
+                for ($i = 0; $i < count($houses); $i++) {
+                    $highest = $i;
+                    for ($j = $i + 1; $j < count($houses); $j++) {
+                        if ($houses[$j]->rated > $houses[$i]->rated) {
+                            $highest = $j;
+                        }
+                    }
+                    if ($houses[$i]->rated < $houses[$highest]->rated) {
+                        $hold = $houses[$highest];
+                        $houses[$highest] = $houses[$i];
+                        $houses[$i] = $hold;
+                    }
+                }
+            
+                $stores = json_encode($stores);
+                $stores = json_decode($stores);
+                $stores = $houses;
+            } else {
+                $stores = Store::all();
             }
-            foreach ($houses as $ind => $shop) {
-       		if ($shop && count($shop->ratings) > 0) {
-            		$avg = 0;
-            		foreach ($shop->ratings as $rating) {
-            			$avg += $rating->rating;
-       			}
-       			$avg = $avg / count($shop->ratings);
-            		$houses[$ind]->rated = $avg;
-            	} else {
-            		$houses[$ind]->rated = 0;
-       		}
-            }
-            for ($i = 0; $i < count($houses); $i++) {
-            	$highest = $i;
-            	for ($j = $i + 1; $j < count($houses); $j++) {
-            		if ($houses[$j]->rated > $houses[$i]->rated) {
-            			$highest = $j;
-            		}
-            	}
-            	if ($houses[$i]->rated < $houses[$highest]->rated) {
-            		$hold = $houses[$highest];
-            		$houses[$highest] = $houses[$i];
-            		$houses[$i] = $hold;
-            	}
-            }
-		
-	    $stores = json_encode($stores);
-	    $stores = json_decode($stores);
-	    $stores->data = $houses;
-	    
-            return $stores;
+
+            return Controller::responder(true, "Successfully retrieved stores.", $stores);
         }
     }
 

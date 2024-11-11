@@ -13,6 +13,16 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get messages endpoint - POST request query parameters:,
+     *     description: Get Messages endpoint - Parameters for POST request must have the recepient id or sender id or both. The sender id/recepient id are constrained to the user table { sender_id ||/&& recepient_id }. The id of the message could also be passed to get the message,
+     *     tags: Message
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Message
+     * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -71,6 +81,16 @@ class MessageController extends Controller
     /**
      * Create a new resource, i.e the message.
      *
+     * @Request({
+     *     summary: Create messages endpoint - POST request query parameters:,
+     *     description: Create Messages endpoint - Parameters for POST request must have the recepient id, sender id and body. The sender id/recepient id are constrained to the user table { sender_id && recepient_id && body },
+     *     tags: Message
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Message
+     * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function store (Request $request)
@@ -127,6 +147,16 @@ class MessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @Request({
+     *     summary: Update messages endpoint - POST request query parameters:,
+     *     description: Update Messages endpoint - Parameters for POST request must have the recepient id, sender id and body. The sender id/recepient id are constrained to the user table { sender_id && recepient_id && body },
+     *     tags: Message
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Message
+     * )
+     * 
      * @param  \App\Http\Requests\UpdateMessageRequest  $request
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
@@ -147,11 +177,25 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @Request({
+     *     summary: Delete messages endpoint - POST request query parameters:,
+     *     description: Delete Messages endpoint - Parameters for POST request must have the message id { id },
+     *     tags: Message
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Message
+     * )
+     * 
      * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Request $request)
     {
-        //
+        $mess = Message::find($request->id);
+        $old = $mess;
+        $mess->delete();
+
+        return Controller::responder(true, "Successfully deleted message.", $old);
     }
 }

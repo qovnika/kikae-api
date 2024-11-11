@@ -44,6 +44,15 @@ class StoreratingsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Get Product endpoint - GET request query parameters,
+     *     description: Get product endpoint - Parameters for POST request: {store_id, user_id, rating},
+     *     tags: Store
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Storeratings
+     * )
      * @param  \App\Http\Requests\StoreStoreratingsRequest  $request
      * @return \Illuminate\Http\Response
      */

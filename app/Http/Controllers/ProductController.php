@@ -34,21 +34,26 @@ class ProductController extends Controller
     public function index(HttpRequest $request)
     {
         if ($request->id) {
-            return Product::find($request->id);
+            $products = Product::find($request->id);
+            return Controller::responder(true, "Successfully retrieved products.", $products);
         } elseif ($request->store_id && $request->category) {
-            return Product::orderBy("id", "DESC")->where([
+            $products = Product::orderBy("id", "DESC")->where([
                 "store_id" => $request->store_id,
                 "category_id" => $request->category
-            ])->paginate(12);
+            ])->get();
+            return Controller::responder(true, "Successfully retrieved products.", $products);
         } elseif($request->store_id) {
-            return Product::orderBy("id", "DESC")->where('store_id', $request->store_id)->paginate(12);
+            $products = Product::orderBy("id", "DESC")->where('store_id', $request->store_id)->get();
+            return Controller::responder(true, "Successfully retrieved products.", $products);
         } elseif ($request->category) {
-            return Product::orderBy("id", "DESC")->where("category_id", $request->category)->paginate(9);
+            $products = Product::orderBy("id", "DESC")->where("category_id", $request->category)->get();
+            return Controller::responder(true, "Successfully retrieved products.", $products);
         } elseif ($request->all) {
             $products = Product::all()->sortBy("id")->unique();
             return Controller::responder(true, "Successfully retrieved products.", $products);
         } else {
-            return Product::orderBy("id", "DESC")->paginate(9);
+            $products = Product::orderBy("id", "DESC")->get();
+            return Controller::responder(true, "Successfully retrieved products.", $products);
         }
     }
 
@@ -69,12 +74,17 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProductRequest  $request
-     * @return \Illuminate\Http\Response
+     * @Request({
+     *     summary: Store Product drawing endpoint - GET request query parameters,
+     *     description: Store product drawing endpoint - Parameters for POST request requires product_id and size: {product_id, size},
+     *     tags: Product
+     * })
      * @Response(
      *    code: 200
      *    ref: Product
      * )
+     * @param  \App\Http\Requests\StoreProductRequest  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreProductRequest $request)
     {
@@ -93,49 +103,49 @@ class ProductController extends Controller
             "description" => $request->description,
             "units" => $request->units,
             "category_id" => $request->category_id,
-            "product_category_id" => $request->product["product_category_id"],
+            "product_category_id" => $request->product_category_id,
             "store_id" => $request->store_id,
             "old_price" => $request->old_price,
             "made_in_nigeria" => $request->made_in_nigeria
         ]);
 
-	if (count($request->product["media"]) > 0) {
-		$media = $request->product["media"];
+	if (count($request->media) > 0) {
+		$media = $request->media;
 		foreach ($media as $medium) {
 		    Media::create(array_merge($medium, ["product_id" => $product->id]));
 		}
 	}
 	
-	if (count($request->product["colours"]) > 0) {
-		$colours = $request->product["colours"];
+	if (count($request->colours) > 0) {
+		$colours = $request->colours;
 		foreach ($colours as $colour) {
 		    ProductColor::create(array_merge($colour, ["product_id" => $product->id]));
 		}
 	}
 	
-	if (count($request->product["fabrics"]) > 0) {
-		$fabrics = $request->product["fabrics"];
+	if (count($request->fabrics) > 0) {
+		$fabrics = $request->fabrics;
 		foreach ($fabrics as $fabric) {
 		    ProductFabric::create(array_merge($fabric, ["product_id" => $product->id]));
 		}
 	}
 
-	if (count($request->product["drawings"]) > 0) {
-		$drawings = $request->product["drawings"];
+	if (count($request->drawings) > 0) {
+		$drawings = $request->drawings;
 		foreach ($drawings as $drawing) {
 		    ProductDrawing::create(array_merge($drawing, ["product_id" => $product->id]));
 		}
 	}
 	
-	if (count($request->product["sizes"]) > 0) {
-		$sizes = $request->product["sizes"];
+	if (count($request->sizes) > 0) {
+		$sizes = $request->sizes;
 		foreach ($sizes as $size) {
 		    ProductSize::create(array_merge($size, ["product_id" => $product->id]));
 		}
 	}
 	
-	if (count($request->product["addresses"]) > 0) {
-		$addresses = $request->product["addresses"];
+	if (count($request->addresses) > 0) {
+		$addresses = $request->addresses;
 		foreach ($addresses as $address) {
 		    ProductLocation::create(array_merge($address, ["product_id" => $product->id]));
 		}

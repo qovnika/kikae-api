@@ -16,15 +16,15 @@ class PasswordForgotten extends Mailable
 
     public $user;
     
-    public $password;
+    public $passcode;
     
     /**
      * Create a new message instance.
      */
-    public function __construct(User $user, $password)
+    public function __construct(User $user, $passcode)
     {
         $this->user = $user;
-        $this->password = $password;
+        $this->passcode = $passcode;
     }
 
     /**

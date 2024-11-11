@@ -46,7 +46,7 @@ class EventRegisterController extends Controller
      *
      * @Request({
      *     summary: Create event register endpoint - POST request query parameters:,
-     *     description: Create event register endpoint - Parameters for POST request must have the user id {user_id},
+     *     description: Create event register endpoint - Parameters for POST request must have the user id and event_id { user_id && event_id },
      *     tags: Event
      * })
      * @Response(
@@ -67,7 +67,7 @@ class EventRegisterController extends Controller
     	} else {
     	
 		$event = EventRegister::create([
-			"event_id" => $request->id,
+			"event_id" => $request->event_id,
 			"user_id" => $request->user_id
 		]);
 		
@@ -118,5 +118,40 @@ class EventRegisterController extends Controller
     public function destroy(EventRegister $eventRegister)
     {
         //
+    }
+
+    /**
+     * Deregister the User from the event.
+     *
+     * @Request({
+     *     summary: Unregister event register endpoint - POST request query parameters:,
+     *     description: Unregister event register endpoint - Parameters for POST request must have the user id and event_id { user_id && event_id },
+     *     tags: Event
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: EventRegister
+     * )
+     * @param  \App\Models\EventRegister  $eventRegister
+     * @return \Illuminate\Http\Response
+     */
+    public function deregister(Request $request)
+    {
+        $request->validate([
+            "event_id" => "required",
+            "user_id" => "required"
+        ]);
+
+        $event = EventRegister::where([
+            "event_id" => $request->event_id,
+            "user_id" => $request->user_id
+        ]);
+
+        if (count($event) > 0) {
+            return Controller::responder(false, "The user you specified is not registered for that event.", $event);
+        } else {
+            $event->delete();
+            return Controller::responder(true, "Successfully unregistered the user for the event specified.", $event);
+        }
     }
 }

@@ -236,7 +236,7 @@ class UserController extends Controller
 			$user->code = $passcode;
 			$user->save();
 			Mail::to($user->email)->send(new PasswordForgotten($user, $passcode));
-			return Controller::responder(true, "Successfully sent code to your email address.", $user);
+			return Controller::responder(true, "Successfully sent code to your email address. ", $user);
 		} else {
 			return Controller::responder(false, "The email address you provided is not in our records. Please make sure you entered the correct email address.", $user);
 		}

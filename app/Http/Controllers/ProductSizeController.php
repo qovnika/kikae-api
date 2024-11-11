@@ -31,6 +31,16 @@ class ProductSizeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Store Product drawing endpoint - GET request query parameters,
+     *     description: Store product drawing endpoint - Parameters for POST request requires product_id and size: {product_id, size},
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductSize
+     * )
+     *
      * @param  \App\Http\Requests\StoreProductSizeRequest  $request
      * @return \Illuminate\Http\Response
      */

@@ -31,6 +31,16 @@ class ProductFabricController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Store Product drawing endpoint - GET request query parameters,
+     *     description: Store product drawing endpoint - Parameters for POST request requires product_id, name and url: {product_id, name, url},
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductFabric
+     * )
+     *
      * @param  \App\Http\Requests\StoreProductFabricRequest  $request
      * @return \Illuminate\Http\Response
      */

@@ -113,6 +113,24 @@ Route::post("/adminUpdateProduct", [ProductController::class, "update"]);
 //Add product
 Route::post("/addProduct", [ProductController::class, "store"]);
 
+//Add product
+Route::post("/addProductSize", [ProductSizeController::class, "store"]);
+
+//Add product
+Route::post("/addProductColor", [ProductColorController::class, "store"]);
+
+//Add product
+Route::post("/addProductDrawing", [ProductDrawingController::class, "store"]);
+
+//Add product
+Route::post("/addProductFabric", [ProductFabricController::class, "store"]);
+
+//Add product
+Route::post("/addProductLocation", [ProductLocationController::class, "store"]);
+
+//Add product
+Route::post("/addProductSize", [ProductSizeController::class, "store"]);
+
 //Delete product
 Route::post("/deleteProduct", [ProductController::class, "destroy"]);
 
@@ -203,6 +221,9 @@ Route::post('/createMessage', [MessageController::class, "store"]);
 // Update Message
 Route::post('/updateMessage', [MessageController::class, "update"]);
 
+// Delete Message
+Route::post('/deleteMessage', [MessageController::class, "delete"]);
+
 // Get all subscription Plans
 Route::get('/getPlans', [PlansController::class, "index"]);
 
@@ -250,6 +271,9 @@ Route::post("/deleteEventMedia", [EventMediaController::class, "destroy"]);
 
 //Register a user for an event
 Route::post("/registerEvent", [EventRegisterController::class, "store"]);
+
+//Unregister a user for an event
+Route::post("/deregisterEvent", [EventRegisterController::class, "deregister"]);
 
 //Get Store visits/views
 Route::post("/incrementStoreVisits", [StoreController::class, "incrementStoreVisits"]);

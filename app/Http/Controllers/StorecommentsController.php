@@ -38,6 +38,15 @@ class StorecommentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Get Product endpoint - GET request query parameters,
+     *     description: Get product endpoint - Parameters for POST request: {store_id, comment, user_id, parent_id},
+     *     tags: Store
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Storecomments
+     * )
      * @param  \App\Http\Requests\StoreStorecommentsRequest  $request
      * @return \Illuminate\Http\Response
      */

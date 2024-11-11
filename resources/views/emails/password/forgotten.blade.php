@@ -5,10 +5,10 @@ Hi {{ $user->lname." ".$user->fname }},
 
 You can use the following code to change your password.
 
-Password: <strong>{{ $passcode }}</strong>
+Passcode: <strong>{{ $passcode }}</strong>
 
 <x-mail::button :url="'https://mytailor.vercel.app'">
-Continue to login
+Continue
 </x-mail::button>
 
 Thanks,<br>

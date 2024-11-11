@@ -31,6 +31,16 @@ class ProductDrawingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Store Product drawing endpoint - GET request query parameters,
+     *     description: Store product drawing endpoint - Parameters for POST request requires product_id, title, description and url: {product_id, title, description, url},
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductDrawing
+     * )
+     *
      * @param  \App\Http\Requests\StoreProductDrawingRequest  $request
      * @return \Illuminate\Http\Response
      */

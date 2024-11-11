@@ -42,6 +42,16 @@ class ProductColorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Store Product color endpoint - GET request query parameters: {all=1},
+     *     description: Store product color endpoint - Parameters for POST request requires product_id, name, value and url: {product_id, name, value, url},
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductColor
+     * )
+     *
      * @param  \App\Http\Requests\StoreProductColorRequest  $request
      * @return \Illuminate\Http\Response
      */

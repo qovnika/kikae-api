@@ -31,6 +31,16 @@ class ProductLocationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Store Product location endpoint - GET request query parameters,
+     *     description: Store product location endpoint - Parameters for POST request requires product_id, address: {product_id, address},
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductLocation
+     * )
+     *
      * @param  \App\Http\Requests\StoreProductLocationRequest  $request
      * @return \Illuminate\Http\Response
      */

@@ -32,6 +32,16 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Get Product endpoint - GET request query parameters: {all=1},
+     *     description: Get product endpoint - Parameters for POST request: {category_id, store_id},
+     *     tags: Media
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Media
+     * )
+     *
      * @param  \App\Http\Requests\StoreMediaRequest  $request
      * @return \Illuminate\Http\Response
      */

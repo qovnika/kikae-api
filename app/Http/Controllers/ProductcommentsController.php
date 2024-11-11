@@ -26,7 +26,17 @@ class ProductcommentsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Store Product comments endpoint - GET request query parameters: {all=1},
+     *     description: Store product comments endpoint - Parameters for POST request requires comment, product_id and parent_id: {comment, product_id, parent_id},
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: ProductComments
+     * )
      *
      * @return \Illuminate\Http\Response
      */

@@ -33,6 +33,15 @@ class StorelikesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Get Product endpoint - GET request query parameters,
+     *     description: Get product endpoint - Parameters for POST request: {store_id, user_id, like},
+     *     tags: Store
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Storelikes
+     * )
      * @param  \App\Http\Requests\StoreStorelikesRequest  $request
      * @return \Illuminate\Http\Response
      */
