@@ -13,6 +13,17 @@ class BankController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get Bank account details endpoint - POST request query parameters:,
+     *     description: Get Bank account details register endpoint - Parameters for POST request must have the store id { store_id },
+     *     tags: Banks
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Bank
+     * )
+     * Remove the specified resource from storage.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -38,6 +49,18 @@ class BankController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create Bank account details endpoint - POST request query parameters:,
+     *     description: Create Bank account details register endpoint - Parameters for POST request must have the store id, bank name, account number, account name, recepient code, bank code { bank_name && account_number && account_name && recepient_code && bank_code && store_id },
+     *     tags: Banks
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Bank
+     * )
+     * 
+     * Remove the specified resource from storage.
      *
      * @param  \App\Http\Requests\StoreBankRequest  $request
      * @return \Illuminate\Http\Response
@@ -96,6 +119,16 @@ class BankController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @Request({
+     *     summary: Delete Bank account details endpoint - POST request query parameters:,
+     *     description: Delete Bank account details register endpoint - Parameters for POST request must have the bank account id { id },
+     *     tags: Banks
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Bank
+     * )
      *
      * @param  \App\Models\Bank  $bank
      * @return \Illuminate\Http\Response

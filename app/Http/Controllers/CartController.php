@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\ArtistAvailable;
 
 class CartController extends Controller
 {
@@ -14,13 +15,14 @@ class CartController extends Controller
      *
      * @Request({
      *     summary: Get cart endpoint - POST request query parameters:,
-     *     description: Get cart endpoint - Parameters for POST request: {user_id},
+     *     description: Get cart endpoint - Parameters for POST request must provide user ID {user_id},
      *     tags: Cart
      * })
      * @Response(
      *    code: 200
      *    ref: Cart
      * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -34,13 +36,14 @@ class CartController extends Controller
      *
      * @Request({
      *     summary: Get cart item endpoint - POST request query parameters:,
-     *     description: Get cart item endpoint - Parameters for POST request: {id},
+     *     description: Get cart item endpoint - Parameters for POST request must contain cart ID {id},
      *     tags: Cart
      * })
      * @Response(
      *    code: 200
      *    ref: Cart
      * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function getCartItem (Request $request)
@@ -62,38 +65,99 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Add to cart item endpoint - POST request query parameters,
+     *     description: Add to cart item endpoint - Parameters for POST request must have user id and units. Optionally you may pass size id, location id, color id, drawing id, fabric id { user_id && units || [ size_id || color_id || fabric_id || location_id drawing_id || top_length || shoulder_length || top_length || neck_length || arm_length || sleeves || biceps || armors || bottom_length || ankle_width || thigh || <(availability || available_id) && product_id > ] },
+     *     tags: Cart
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Cart
+     * )
+     *
      * @param  \App\Http\Requests\StoreCartRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCartRequest $request)
     {
         $request->validate([
-            "user_id" => ["required"],
-            "units" => ["required"]
+            "user_id" => "required|exists:users,id",
+            "product_id" => "required|exists:products,id",
+            "units" => "required"
         ]);
 
         $data = [
             "user_id" => $request->user_id,
+            "product_id" => $request->product_id
         ];
 
         if ($request->size_id) {
-            array_push($data, ["size_id" => $request->size_id]);
+            array_merge($data, ["size_id" => $request->size_id]);
         }
 
         if ($request->color_id) {
-            array_push($data, ["color_id" => $request->color_id]);
+            array_merge($data, ["color_id" => $request->color_id]);
         }
 
         if ($request->location_id) {
-            array_push($data, ["location_id" => $request->location_id]);
+            array_merge($data, ["location_id" => $request->location_id]);
         }
 
         if ($request->drawing_id) {
-            array_push($data, ["drawing_id" => $request->drawing_id]);
+            array_merge($data, ["drawing_id" => $request->drawing_id]);
         }
 
         if ($request->fabric_id) {
-            array_push($data, ["fabric_id" => $request->fabric_id]);
+            array_merge($data, ["fabric_id" => $request->fabric_id]);
+        }
+
+        if ($request->top_length) {
+            array_merge($data, ["top_length" => $request->top_length]);
+        }
+
+        if ($request->shoulder_length) {
+            array_merge($data, ["shoulder_length" => $request->shoulder_length]);
+        }
+
+        if ($request->neck_length) {
+            array_merge($data, ["neck_length" => $request->neck_length]);
+        }
+
+        if ($request->arm_length) {
+            array_merge($data, ["sleeves" => $request->arm_length]);
+        }
+
+        if ($request->arm_width) {
+            array_merge($data, ["biceps" => $request->arm_width]);
+        }
+
+        if ($request->belly_length) {
+            array_merge($data, ["armors" => $request->belly_length]);
+        }
+
+        if ($request->waist_length) {
+            array_merge($data, ["waist_length" => $request->waist_length]);
+        }
+
+        if ($request->bottom_length) {
+            array_merge($data, ["bottom_length" => $request->bottom_length]);
+        }
+
+        if ($request->ankle_width) {
+            array_merge($data, ["ankle_width" => $request->ankle_width]);
+        }
+
+        if ($request->thigh) {
+            array_merge($data, ["thigh" => $request->thigh]);
+        }
+
+        if ($request->availability) {
+            $availability = ArtistAvailable::create([
+                "store_id" => $request->store_id,
+                "product_id" => $request->product_id,
+                "dated" => $request->availability
+            ]);
+            array_merge($data, ["available_id" => $availability->id]);
         }
 
         $cart = Cart::create($data);
@@ -125,18 +189,17 @@ class CartController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Update the specified resource in storage.
      *
      * @Request({
      *     summary: Update cart item endpoint - POST request query parameters:,
-     *     description: Update cart item endpoint - Parameters for POST request must have cart item id {id},
+     *     description: Update cart item endpoint - Parameters for POST request must have user id and units. Optionally you may pass size id, location id, color id, drawing id, fabric id { user_id && units | [ size_id || color_id || fabric_id || location_id drawing_id || top_length || shoulder_length || top_length || neck_length || arm_length || sleeves || biceps || armors || bottom_length || ankle_width || thigh ] },
      *     tags: Cart
      * })
      * @Response(
      *    code: 200
      *    ref: Cart
      * )
-     * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCartRequest  $request
      * @param  \App\Models\Cart  $cart
@@ -145,10 +208,14 @@ class CartController extends Controller
     public function update(UpdateCartRequest $request, Cart $cart)
     {
         $request->validate([
-            "units" => ["required"]
+            "user_id" => "required|exists:users,id",
+            "product_id" => "required|exists:products,id",
+            "units" => "required",
+            "id" => "required|exists:carts,id"
         ]);
 
         $cart = Cart::find($request->id);
+        $cart->units = $request->units;
 
         if ($request->size_id) {
             $cart->size_id = $request->size_id;            
@@ -168,6 +235,46 @@ class CartController extends Controller
 
         if ($request->drawing_id) {
             $cart->drawing_id = $request->drawing_id;            
+        }
+
+        if ($request->top_length) {
+            $cart->top_length = $request->top_length;
+        }
+
+        if ($request->shoulder_length) {
+            $cart->shoulder_length = $request->shoulder_length;
+        }
+
+        if ($request->neck_length) {
+            $cart->neck_length = $request->neck_length;
+        }
+
+        if ($request->sleeves) {
+            $cart->sleeves = $request->sleeves;
+        }
+
+        if ($request->biceps) {
+            $cart->biceps = $request->biceps;
+        }
+
+        if ($request->armors) {
+            $cart->armors = $request->armors;
+        }
+
+        if ($request->waist_length) {
+            $cart->waist_length = $request->waist_length;
+        }
+
+        if ($request->bottom_length) {
+            $cart->bottom_length = $request->bottom_length;
+        }
+
+        if ($request->ankle_width) {
+            $cart->ankle_width = $request->ankle_width;
+        }
+
+        if ($request->thigh) {
+            $cart->thigh = $request->thigh;
         }
 
         $cart->save();

@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\Transaction;
 use App\Models\Product;
 use App\Models\Store;
+use App\Models\LogisticDestination;
+use App\Models\ArtistAvailable;
 use App\Mail\OrderPlaced;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -30,6 +32,16 @@ class TransactionController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @Request({
+     *     summary: Get Transactions endpoint - POST request query parameters:,
+     *     description: Get Transactions register endpoint - Parameters for POST request must have the store id or user id { store_id || user_id },
+     *     tags: Transactions
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Transaction
+     * )
      *
      * @return \Illuminate\Http\Response
      */
@@ -59,6 +71,16 @@ class TransactionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Create Transaction endpoint - POST request query parameters,
+     *     description: Create Transaction endpoint - Parameters for POST request must have the transaction reference, transaction id, status, amount, delivery address, user id and orders array { tx_ref && transaction_id && status && amount && address && user_id && orders[] }. Refer to the Order endpoint for parameters to pass for the orders in the array,
+     *     tags: Transactions
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Transaction
+     * )
+     *
      * @param  \App\Http\Requests\StoreTransactionRequest  $request
      * @return \Illuminate\Http\Response
      */
@@ -87,8 +109,9 @@ class TransactionController extends Controller
                 "units" => $order->units,
                 "name" => $order->name,
                 "price" => $order->price,
-                "size" => $order->size,
+//                "size" => $order->size,
                 "transaction_id" => $trans->id,
+                "size" => isset($order->size) && isset($order->size->id) ? $order->size->id : NULL,
                 "colour" => isset($order->colour) && isset($order->colour->id) ? $order->colour->id : NULL,
                 "drawing" => isset($order->drawing) && isset($order->drawing->id) ? $order->drawing->id : NULL,
                 "fabric" => isset($order->fabric) && isset($order->fabric->id) ? $order->fabric->id : NULL,
@@ -106,12 +129,16 @@ class TransactionController extends Controller
                 array_merge($creator, ["drawing" => $order->drawing->id]); 
             }
 
-            if (property_exists($order->fabric, "id")) {
+            if (isset($order->fabric->id)) {
                 array_merge($creator, ["fabric" => $order->fabric->id]); 
             }
 
             if (isset($order->location->id)) {
                 array_merge($creator, ["location" => $order->location->id]); 
+            }
+
+            if (isset($order->size->id)) {
+                array_merge($creator, ["size" => $order->size->id]); 
             }
 
             if (isset($order->area_id)) {
@@ -122,11 +149,65 @@ class TransactionController extends Controller
                 array_merge($creator, ["delivery_address" => $order->delivery_address]);
             }
 
+            if (isset($order->top_length)) {
+                array_merge($creator, ["top_length" => $order->top_length]);
+            }
+    
+            if (isset($order->shoulder_length)) {
+                array_merge($creator, ["shoulder_length" => $order->shoulder_length]);
+            }
+    
+            if (isset($order->neck_length)) {
+                array_merge($creator, ["neck_length" => $order->neck_length]);
+            }
+    
+            if (isset($order->sleeves)) {
+                array_merge($creator, ["sleeves" => $order->sleeves]);
+            }
+    
+            if (isset($order->biceps)) {
+                array_merge($creator, ["biceps" => $order->biceps]);
+            }
+    
+            if (isset($order->armors)) {
+                array_merge($creator, ["armors" => $order->armors]);
+            }
+    
+            if (isset($order->waist_length)) {
+                array_merge($creator, ["waist_length" => $order->waist_length]);
+            }
+    
+            if (isset($order->bottom_length)) {
+                array_merge($creator, ["bottom_length" => $order->bottom_length]);
+            }
+    
+            if (isset($order->ankle_width)) {
+                array_merge($creator, ["ankle_width" => $order->ankle_width]);
+            }
+    
+            if (isset($order->thigh)) {
+                array_merge($creator, ["thigh" => $order->thigh]);
+            }
+
+            if (isset($order->availability)) {
+                $availability = ArtistAvailable::create([
+                    "store_id" => $order->store_id,
+                    "product_id" => $order->product_id,
+                    "dated" => $order->availability,
+                    "available" => false
+                ]);
+                array_merge($creator, ["available_id" => $availability->id]);
+            }
+    
+            if (isset($order->available_id)) {
+                array_merge($creator, ["available_id" => $order->available_id]);
+            }
+
             $order = Order::create($creator);
             $orders[] = $order;
             
             $product = Product::find($order->product_id);
-    	    $product->units -= $request->units;
+    	    $product->units -= $order->units;
 	        $product->save();
 
             //Get store associated with Product in order to send notification to store owner
@@ -173,6 +254,16 @@ class TransactionController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @Request({
+     *     summary: Create Transaction endpoint - POST request query parameters,
+     *     description: Create Transaction endpoint - Parameters for POST request must have the transaction reference, transaction id, status, and id { tx_ref && transaction_id && status && id },
+     *     tags: Transactions
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Transaction
+     * )
      *
      * @param  \App\Http\Requests\UpdateTransactionRequest  $request
      * @param  \App\Models\Transaction  $transaction

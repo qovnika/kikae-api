@@ -32,19 +32,29 @@ class SubscriptionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @Request({
+     *     summary: Create subscriptions endpoint - POST request query parameters,
+     *     description: Create subscriptions endpoint - Parameters for POST request must have the transactin_id, status, store id, tx_ref, price, plan_id. { store_id, transaction_id, tx_ref, status, price, plan_id },
+     *     tags: Subscription
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Subscription
+     * )
+     *
      * @param  \App\Http\Requests\StoreSubscriptionRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreSubscriptionRequest $request)
     {
-        $plan = Plans::where("price", $request->amount)->first();
+        $plan = Plans::find($request->plan_id);
         $subscription = Subscription::create([
             "store_id" => $request->store_id,
             "tx_ref" => $request->tx_ref,
             "transaction_id" => $request->transaction_id,
             "status" => $request->status,
-            "price" => $request->amount,
-            "plan_id" => $plan->id
+            "price" => $request->price,
+            "plan_id" => $request->plan_id
         ]);
         $subscription->name = $plan->name;
         $subscription->plan = Plans::find($plan->id);

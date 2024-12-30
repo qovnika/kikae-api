@@ -12,11 +12,26 @@ class ProductlikesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get Product likes endpoint - GET request query parameters,
+     *     description: Get product likes endpoint - Parameters for POST request requires either product_id or user_id { product_id || user_id },
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Productlikes
+     * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $likes = Productlikes::where("product_id", $request->product_id)->get();
+        if ($request->product_id) {
+            $likes = Productlikes::where("product_id", $request->product_id)->get();
+        } elseif ($request->user_id) {
+            $likes = Productlikes::where("user_id", $request->user_id)->get();
+        }
+
         return Controller::responder(true, "Successfully retrieved likes.", $likes);
     }
 
@@ -107,11 +122,24 @@ class ProductlikesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @Request({
+     *     summary: Delete Product likes endpoint - GET request query parameters,
+     *     description: Delete product likes endpoint - Parameters for POST request requires either product like id { id },
+     *     tags: Product
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Productlikes
+     * )
      * @param  \App\Models\Productlikes  $productlikes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Productlikes $productlikes)
+    public function destroy(Request $request)
     {
-        //
+        $like = Productlikes::find($request->id);
+
+        $like->delete();
+
+        return Controller::responder(true, "Successfully removed entry.", []);
     }
 }

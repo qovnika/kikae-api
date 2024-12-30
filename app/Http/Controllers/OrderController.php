@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use \Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -19,8 +20,8 @@ class OrderController extends Controller
      *
      * @Request({
      *     summary: Get orders endpoint - POST request query parameters:,
-     *     description: Get orders endpoint - Parameters for POST request must have the store id or user id {store_id || user_id},
-     *     tags: Order
+     *     description: Get orders endpoint - Parameters for POST request must have the order ID, store id or user id { store_id || user_id || id || month || year || (month && year) },
+     *     tags: Transaction
      * })
      * @Response(
      *    code: 200
@@ -31,7 +32,9 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->user_id) {
+        if ($request->id) {
+            $orders = Order::find($request->id);
+        } elseif ($request->user_id) {
             $orders = Order::withWhereHas("transaction", function ($query) use ($request) {
                 $query->where("user_id", $request->user_id);
             })->orderBy("id", "DESC")->get();
@@ -39,7 +42,12 @@ class OrderController extends Controller
             $orders = Order::withWhereHas("product", function ($query) use ($request) {
                 $query->where("store_id", $request->store_id);
             })->orderBy("id", "DESC")->get();
-            /*            $orders = DB::select("select * from `orders` where exists (select * from `products` where `orders`.`product_id` = `products`.`id` and `store_id` = '".$request->store_id."') order by `id` desc");	*/
+        } elseif ($request->year && $request->month) {
+            $orders = Order::whereYear("created_at", Carbon::parse($request->year)->month())->whereMonth("created_at", Carbon::parse($request->month)->month())->get();
+        } elseif ($request->month) {
+            $orders = Order::whereMonth("created_at", Carbon::parse($request->month)->month())->get();
+        } elseif ($request->year) {
+            $orders = Order::whereYear("created_at", Carbon::parse($request->year)->month())->get();
         } else {
             $orders = Order::orderBy("id", "DESC")->get();
         }
@@ -61,9 +69,9 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @Request({
-     *     summary: Create orders endpoint - POST request query parameters:,
-     *     description: Create orders endpoint - Parameters for POST request must have the price, units, product id and user id {price, units, product_id, user_id},
-     *     tags: Order
+     *     summary: Create orders endpoint - POST request query parameters,
+     *     description: Create orders endpoint - Parameters for POST request must have the price, units, product id, note, name and user id. The following fields are optional (size || colour || drawing || fabric || location || logistic_id || status || settled || longitude || latitude || transaction_id || delivery address || area_id){ price && units && product_id && note && name && user_id || size || colour || drawing || fabric || location || logistic_id || status || settled || longitude || latitude || transaction_id || delivery address || area_id || top_length || shoulder_length || top_length || neck_length || arm_length || arm_width || belly_length || waist_length || bottom_length || ankle_width || thigh || availability || available_id },
+     *     tags: Transaction
      * })
      * @Response(
      *    code: 200
@@ -119,8 +127,8 @@ class OrderController extends Controller
      *
      * @Request({
      *     summary: Update orders endpoint - POST request query parameters:,
-     *     description: Update orders endpoint - Parameters for POST request must have the order id and status {id, status},
-     *     tags: Order
+     *     description: Update orders endpoint - Parameters for POST request must have the price, units, product id, note, name and user id. The following fields are optional: (size || colour || drawing || fabric || location || logistic_id || status || settled || longitude || latitude || transaction_id || delivery address || area_id) - { price && units && product_id && note && name && user_id || size || colour || drawing || fabric || location || logistic_id || status || settled || longitude || latitude || transaction_id || delivery address || area_id || [ size_id || color_id || fabric_id || location_id drawing_id || top_length || shoulder_length || top_length || neck_length || arm_length || arm_width || belly_length || waist_length || bottom_length || ankle_width || thigh || <(availability || available_id) && product_id > ] },
+     *     tags: Transaction
      * })
      * @Response(
      *    code: 200

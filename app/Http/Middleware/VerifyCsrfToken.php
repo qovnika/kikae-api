@@ -101,6 +101,20 @@ class VerifyCsrfToken extends Middleware
         "/getCartItem",
         "/sendCode",
         "/verifyCode",
-        "/updatePassword"
+        "/updatePassword",
+        "/getRunwayProducts",
+        "/addRunwayProduct",
+        "/deleteRunwayProduct",
+        "/addUserAddress",
+        "/updateUserAddress",
+        "/deleteUserAddress",
+        "/getUserAddresses",
+        "/addAvailability",
+        "/updateAvailability",
+        "/deleteAvailability",
+        "/getAvailability",
+        "/addCoverageArea",
+        "/updateCoverageArea",
+        "/deleteCoverageArea",
     ];
 }

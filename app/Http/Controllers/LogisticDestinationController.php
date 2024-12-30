@@ -12,6 +12,16 @@ class LogisticDestinationController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get Logistic destinations endpoint - POST request query parameters:,
+     *     description: Get Logistics destinations endpoint - Parameters for POST request must have the logistic company id { id },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: LogisticDestination
+     * )
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -39,6 +49,16 @@ class LogisticDestinationController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Create Logistic destination endpoint - POST request query parameters,
+     *     description: Create Logistics destination endpoint - Parameters for POST request must have the Logistic company id, state id, area and cost { logistic_id && state_id && area && cost },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: LogisticDestination
+     * )
      *
      * @param  \App\Http\Requests\StoreLogisticDestinationRequest  $request
      * @return \Illuminate\Http\Response
@@ -87,6 +107,16 @@ class LogisticDestinationController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @Request({
+     *     summary: Update Logistic destination endpoint - POST request query parameters,
+     *     description: Update Logistics destination endpoint - Parameters for POST request must have the logistic destination id, Logistic company id, state id, area and cost { id && logistic_id && state_id && area && cost },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: LogisticDestination
+     * )
+     *
      * @param  \App\Http\Requests\UpdateLogisticDestinationRequest  $request
      * @param  \App\Models\LogisticDestination  $logisticDestination
      * @return \Illuminate\Http\Response
@@ -97,7 +127,8 @@ class LogisticDestinationController extends Controller
             "state_id" => "required",
             "logistic_id" => "required",
             "area" => "required",
-            "cost" => "required"
+            "cost" => "required",
+            "id" => "required|exists:logistic_destination,id"
         ]);
 
         $logistic = LogisticDestination::find($request->id);
@@ -113,6 +144,16 @@ class LogisticDestinationController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @Request({
+     *     summary: Delete Logistic destination endpoint - POST request query parameters,
+     *     description: Delete Logistics destination endpoint - Parameters for POST request must have the logistic destination id { id },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: LogisticDestination
+     * )
      *
      * @param  \App\Models\LogisticDestination  $logisticDestination
      * @return \Illuminate\Http\Response

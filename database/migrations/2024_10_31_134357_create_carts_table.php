@@ -23,6 +23,18 @@ return new class extends Migration
             $table->foreignId("drawing_id")->nullable()->constrained("product_drawings")->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId("fabric_id")->nullable()->constrained("product_fabrics")->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer("units")->default(1);
+            $table->text("note")->nullable();
+            $table->string("top_length")->nullable();
+            $table->string("shoulder_length")->nullable();
+            $table->string("neck_length")->nullable();
+            $table->string("sleeves")->nullable();
+            $table->string("biceps")->nullable();
+            $table->string("armors")->nullable();
+            $table->string("waist_length")->nullable();
+            $table->string("bottom_length")->nullable();
+            $table->string("thigh")->nullable();
+            $table->string("ankle_width")->nullable();
+            $table->foreignId("available_id")->nullable()->constrained("artist_availables")->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

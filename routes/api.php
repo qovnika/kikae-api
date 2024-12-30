@@ -62,6 +62,21 @@ Route::middleware('auth:sanctum')->get('/getUser/{id}', [UserController::class, 
 //Update user profile from admin
 Route::post("/adminUpdateUser", [UserController::class, "update"]);
 
+//Add an address for a user
+Route::post("/addUserAddress", [AddressController::class, "store"]);
+
+//Update a user's address
+Route::post("/updateUserAddress", [AddressController::class, "update"]);
+
+//Delete a user's address
+Route::post("/deleteUserAddress", [AddressController::class, "destroy"]);
+
+//Get a user's addresses
+Route::post("/getUserAddresses", [AddressController::class, "index"]);
+
+//Get a user's addresses
+Route::get("/getUserAddresses", [AddressController::class, "index"]);
+
 // Get all the stores on the application
 Route::middleware('auth:sanctum')->get('/getStores', [StoreController::class, "index"]);
 
@@ -82,6 +97,9 @@ Route::get('/getStoreProducts/{store_id}', [ProductController::class, "index"]);
 
 // Get Products in a certain category for store
 Route::post('/getStoreProducts', [ProductController::class, "index"]);
+
+// Filter Products provided certain parameters
+Route::post('/filterProducts', [ProductController::class, "filter"]);
 
 // Get Store likes
 Route::post('/getStoreLikes', [StorelikesController::class, "index"]);
@@ -182,11 +200,29 @@ Route::get('/getStoreWithFollowers/{id}', [StoreController::class, "getStoreWith
 // Get Store from user ID
 Route::get('/getUserStore/{user_id}', [StoreController::class, "index"]);
 
+// Get Store availability
+Route::get('/getAvailability/{store_id}', [ArtistAvailableController::class, "index"]);
+
+// Get Store availability
+Route::post('/getAvailability', [ArtistAvailableController::class, "index"]);
+
+// Add Store availability
+Route::post('/addAvailability', [ArtistAvailableController::class, "store"]);
+
+// Update Store availability
+Route::post('/updateAvailability', [ArtistAvailableController::class, "update"]);
+
+// Delete Store availability
+Route::post('/deleteAvailability', [ArtistAvailableController::class, "destroy"]);
+
 // Get user Orders
 Route::post('/getUserOrders', [OrderController::class, "index"]);
 
 // Get store Orders
 Route::post('/getStoreOrders', [OrderController::class, "index"]);
+
+// Create Order
+Route::post('/createOrder', [OrderController::class, "store"]);
 
 // Update Order
 Route::post('/updateOrder', [OrderController::class, "update"]);
@@ -222,7 +258,7 @@ Route::post('/createMessage', [MessageController::class, "store"]);
 Route::post('/updateMessage', [MessageController::class, "update"]);
 
 // Delete Message
-Route::post('/deleteMessage', [MessageController::class, "delete"]);
+Route::post('/deleteMessage', [MessageController::class, "destroy"]);
 
 // Get all subscription Plans
 Route::get('/getPlans', [PlansController::class, "index"]);
@@ -446,3 +482,25 @@ Route::post("/getCart", [CartController::class, "index"]);
 
 //Get cart item
 Route::post("/getCartItem", [CartController::class, "getCartItem"]);
+
+//Get runway product
+Route::post("/getRunwayProduct", [RunwayProductController::class, "index"]);
+
+//Add product to runway video
+Route::post("/addRunwayProduct", [RunwayProductController::class, "store"]);
+
+//Delete product from runway video
+Route::post("/deleteRunwayProduct", [RunwayProductController::class, "destroy"]);
+
+//Add Coverage area for makeup package/product
+Route::post("/addCoverageArea", [CoverageController::class, "store"]);
+
+//Update Coverage area for makeup package/product
+Route::post("/updateCoverageArea", [CoverageController::class, "update"]);
+
+//Delete Coverage area for makeup package/product
+Route::post("/deleteCoverageArea", [CoverageController::class, "destroy"]);
+
+//Get Coverage area for makeup package/product
+Route::get("/getCoverageArea", [CoverageController::class, "index"]);
+

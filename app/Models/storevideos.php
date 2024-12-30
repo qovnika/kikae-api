@@ -11,4 +11,9 @@ class storevideos extends Model
 
     protected $guarded = [];
 
+    protected $with = ["products"];
+
+    public function products () {
+        return $this->hasMany(RunwayProduct::class, "runway_id");
+    }
 }

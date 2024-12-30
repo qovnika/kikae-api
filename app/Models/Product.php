@@ -15,7 +15,7 @@ class Product extends Model
         'bespoke' => 'boolean',
     ];
 
-    protected $with = ["shop", "media", "product_category", "category", "colours", "fabrics", "drawings", "ratings", "likes", "sizes", "locations"];
+    protected $with = ["shop", "media", "product_category", "category", "colours", "fabrics", "drawings", "ratings", "likes", "sizes", "locations", "coverages"];
 
     public function category () {
         return $this->belongsTo(Category::class);
@@ -63,5 +63,13 @@ class Product extends Model
 
     public function locations () {
         return $this->hasMany(ProductLocation::class);
+    }
+
+    public function availability () {
+        return $this->hasMany(ArtistAvailable::class);
+    }
+
+    public function coverages () {
+        return $this->hasMany(Coverage::class);
     }
 }

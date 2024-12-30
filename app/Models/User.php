@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     protected $guarded = ["id"];
 
-    protected $with = ["usertype", "followings"];
+    protected $with = ["usertype", "followings", "addresses"];
 
     public function usertype () {
         return $this->belongsTo(Usertype::class);
@@ -26,5 +26,9 @@ class User extends Authenticatable
 
     public function followings () {
         return $this->hasMany(Follow::class);
+    }
+
+    public function addresses () {
+        return $this->hasMany(Address::class);
     }
 }

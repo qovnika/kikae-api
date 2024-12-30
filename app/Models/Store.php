@@ -13,7 +13,7 @@ class Store extends Model
 
     protected $guarded = [];
 
-    protected $with = ["user", "category", "product_category", "subscriptions", "videos", "stories", "state"];
+    protected $with = ["user", "category", "product_category", "subscriptions", "videos", "stories", "state", "availability"];
 
     protected $casts = [
         'views' => 'integer',
@@ -63,4 +63,7 @@ class Store extends Model
     	return $this->belongsTo(Transaction::class);
     }
 
+    public function availability () {
+        return $this->hasMany(ArtistAvailable::class);
+    }
 }

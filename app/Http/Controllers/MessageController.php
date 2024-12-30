@@ -16,7 +16,7 @@ class MessageController extends Controller
      * @Request({
      *     summary: Get messages endpoint - POST request query parameters:,
      *     description: Get Messages endpoint - Parameters for POST request must have the recepient id or sender id or both. The sender id/recepient id are constrained to the user table { sender_id ||/&& recepient_id }. The id of the message could also be passed to get the message,
-     *     tags: Message
+     *     tags: Messages
      * })
      * @Response(
      *    code: 200
@@ -84,7 +84,7 @@ class MessageController extends Controller
      * @Request({
      *     summary: Create messages endpoint - POST request query parameters:,
      *     description: Create Messages endpoint - Parameters for POST request must have the recepient id, sender id and body. The sender id/recepient id are constrained to the user table { sender_id && recepient_id && body },
-     *     tags: Message
+     *     tags: Messages
      * })
      * @Response(
      *    code: 200
@@ -150,7 +150,7 @@ class MessageController extends Controller
      * @Request({
      *     summary: Update messages endpoint - POST request query parameters:,
      *     description: Update Messages endpoint - Parameters for POST request must have the recepient id, sender id and body. The sender id/recepient id are constrained to the user table { sender_id && recepient_id && body },
-     *     tags: Message
+     *     tags: Messages
      * })
      * @Response(
      *    code: 200
@@ -180,7 +180,7 @@ class MessageController extends Controller
      * @Request({
      *     summary: Delete messages endpoint - POST request query parameters:,
      *     description: Delete Messages endpoint - Parameters for POST request must have the message id { id },
-     *     tags: Message
+     *     tags: Messages
      * })
      * @Response(
      *    code: 200

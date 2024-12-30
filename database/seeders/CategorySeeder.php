@@ -32,7 +32,7 @@ class CategorySeeder extends Seeder
         ]);
         \App\Models\Category::factory()->create([
             'name' => "Make-Up",
-            'description' => "Make-Up"
+            'description' => "Make Up"
         ]);
         \App\Models\Category::factory()->create([
             'name' => "Accessories",

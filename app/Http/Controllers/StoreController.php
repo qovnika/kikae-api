@@ -25,6 +25,7 @@ class StoreController extends Controller
      *    code: 200
      *    ref: Store
      * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -107,6 +108,21 @@ class StoreController extends Controller
         return Store::with("followers")->find($request->id);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @Request({
+     *     summary: Increment store visits/views endpoint - GET request query parameters,
+     *     description: Increment store visits/views endpoint - Parameters for POST request store_id { store_id },
+     *     tags: Store
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Store
+     * )
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function incrementStoreVisits (Request $request) {
         $store = Store::find($request->store_id);
 
@@ -191,7 +207,8 @@ class StoreController extends Controller
             "sound" => $request->audio,
             "description" => $request->description,
             "animation" => $request->animation,
-            "state_id" => $request->state_id
+            "state_id" => $request->state_id,
+            "website" => $request->website
         ]);
 
         $user = User::find($request->user_id);
@@ -275,6 +292,7 @@ class StoreController extends Controller
         $store->animation = $request->animation;
 //        $store->category_id = $store->category_id;
 //        $store->product_category_id = $store->product_category_id;
+        if ($request->website) $store->website = $request->website;
         $store->background_image = $request->bgimg;
         $store->sound = $request->sound;
         $store->volume = $request->volume;

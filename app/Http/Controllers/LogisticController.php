@@ -12,6 +12,16 @@ class LogisticController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get Logistic endpoint - POST request query parameters:,
+     *     description: Get Logistics endpoint - Parameters for POST request must have the logistic company id { id },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Logistic
+     * )
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -37,6 +47,16 @@ class LogisticController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @Request({
+     *     summary: Get Logistic endpoint - POST request query parameters:,
+     *     description: Get Logistics endpoint - Parameters for POST request must have the logistic name, email, phone and address { name && email && phone && address },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Logistic
+     * )
      *
      * @param  \App\Http\Requests\StoreLogisticRequest  $request
      * @return \Illuminate\Http\Response
@@ -85,6 +105,16 @@ class LogisticController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @Request({
+     *     summary: Update Logistic endpoint - POST request query parameters:,
+     *     description: Update Logistics endpoint - Parameters for POST request must have the logistic name, email, phone and address { name && email && phone && address },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Logistic
+     * )
+     *
      * @param  \App\Http\Requests\UpdateLogisticRequest  $request
      * @param  \App\Models\Logistic  $logistic
      * @return \Illuminate\Http\Response
@@ -111,6 +141,16 @@ class LogisticController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @Request({
+     *     summary: Get Logistic endpoint - POST request query parameters:,
+     *     description: Get Logistics endpoint - Parameters for POST request must have the logistic company id { id },
+     *     tags: Logistics
+     * })
+     * @Response(
+     *    code: 200
+     *    ref: Logistic
+     * )
      *
      * @param  \App\Models\Logistic  $logistic
      * @return \Illuminate\Http\Response

@@ -13,6 +13,17 @@ class TransferController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @Request({
+     *     summary: Get Transfer details endpoint - POST request query parameters:,
+     *     description: Get Transfer details register endpoint - Parameters for POST request must have the store id, bank name, account number, account name, recepient code, bank code { bank_name && account_number && account_name && recepient_code && bank_code && store_id },
+     *     tags: Banks
+     * })
+     * 
+     * @Response(
+     *    code: 200
+     *    ref: Transfer
+     * )
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -95,6 +106,17 @@ class TransferController extends Controller
         /**
      * Initiate paystack transfer
      * 
+     * @Request({
+     *     summary: Initiate Paystack transfer endpoint - POST request query parameters:,
+     *     description: Initiate Paystack transfer endpoint - Parameters for POST request must have the source, amount, reference, recepient, reason { source && amount && reference && recepient && reason },
+     *     tags: Banks
+     * })
+     * 
+     * @Response(
+     *    code: 200
+     *    ref: Transfer
+     * )
+     * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
@@ -114,6 +136,17 @@ class TransferController extends Controller
 
     /**
      * Finalize paystack transfer
+     * 
+     * @Request({
+     *     summary: Finalize Paystack transfer endpoint - POST request query parameters:,
+     *     description: Finalize Paystack transfer endpoint - Parameters for POST request must have the parameters as specified by Paystack documentation,
+     *     tags: Banks
+     * })
+     * 
+     * @Response(
+     *    code: 200
+     *    ref: Transfer
+     * )
      * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -135,6 +168,17 @@ class TransferController extends Controller
     /**
      * Verify paystack payment
      * 
+     * @Request({
+     *     summary: Verify Paystack transfer endpoint - POST request query parameters:,
+     *     description: Verify Paystack transfer endpoint - Parameters for POST request must have the parameters as specified by Paystack documentation,
+     *     tags: Banks
+     * })
+     * 
+     * @Response(
+     *    code: 200
+     *    ref: Transfer
+     * )
+     * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
@@ -155,6 +199,17 @@ class TransferController extends Controller
     /**
      * List paystack payment
      * 
+     * @Request({
+     *     summary: List Paystack transfers endpoint - POST request query parameters:,
+     *     description: List Paystack transfers endpoint - Parameters for POST request must have the parameters as specified by Paystack documentation,
+     *     tags: Banks
+     * })
+     * 
+     * @Response(
+     *    code: 200
+     *    ref: Transfer
+     * )
+     * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
@@ -172,6 +227,17 @@ class TransferController extends Controller
 
     /**
      * Fetch paystack transfer
+     * 
+     * @Request({
+     *     summary: Fetch Paystack transfer endpoint - POST request query parameters:,
+     *     description: Fetch Paystack transfer endpoint - Parameters for POST request must have the parameters as specified by Paystack documentation,
+     *     tags: Banks
+     * })
+     * 
+     * @Response(
+     *    code: 200
+     *    ref: Transfer
+     * )
      * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response

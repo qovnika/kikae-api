@@ -128,13 +128,13 @@ class UserController extends Controller
     {
         $image_extensions = ["jpg", "jpeg", "png", "gif", "svg", 'webp'];
         $audio_extensions = ["mp3", "ogg", "wav"];
-        $video_extensions = ["mp4", "webm", "ogg"];
+//        $video_extensions = ["mp4", "webm", "ogg"];
         $file = $request->file('file');
         if (in_array($file->getClientOriginalExtension(), $image_extensions)) {
             $path = $file->store('profile-pic');
         } elseif (in_array($file->getClientOriginalExtension(), $audio_extensions)) {
             $path = $file->store("audios");
-        } elseif (in_array($file->getClientOriginalExtension(), $video_extensions)) {
+        } else {
             $path = $file->store("videos");
         }
         return Controller::responder(true, "The file has been uploaded successfully. ".$file->getClientOriginalExtension(), $path);
@@ -181,18 +181,19 @@ class UserController extends Controller
     public function updatePassword (Request $request) {
 		$request->validate([
 		    'id' => ['required'],
-		    'password' => ['required', 'confirmed', Rules\Password::defaults()],
+		    'password' => ['required'],
+            "confirmed" => "required"
 		]);
 
 		$user = User::find($request->id);
-		if (!Hash::check($request->old, $user->password)) {
-			return Controller::responder(false, "The old password you entered does not match what we have in our database. Please try again.");
-		} else {
+        if ($user) {
 			$user->password = Hash::make($request->password);
 			$user->save();
 			
 			return Controller::responder(true, "Your password has been changed successfully.", $user);
-		}
+        } else {
+            return Controller::responder(false, "We could not fine the user you provided.", $user);
+        }
 	}
 	
     /**

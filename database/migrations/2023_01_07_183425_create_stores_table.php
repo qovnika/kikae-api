@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->text("logo")->nullable();
             $table->text("primary_media")->nullable();
+            $table->string("website")->nullable();
             $table->string("position")->nullable();
             $table->foreignId("category_id")->nullable()->constrained("categories")->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('product_category_id')->nullable()->constrained("product_categories")->cascadeOnUpdate()->cascadeOnDelete();
